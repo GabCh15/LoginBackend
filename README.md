@@ -13,13 +13,8 @@
 3. Create .env with following content
 
 ````
-DB_HOST=
-DB_DATABASE=
-DB_USER=
-DB_PASSWORD=
+GOOGLE_APPLICATION_CREDENTIALS = ""The full path to firebase-key.json in your computer, EX: C:\Users\PC\Documents\VSCode\loginbackend/firebase-key.json""
 
-PORT=3000
-SECRET=AAA
 ````
 
 ## Run
