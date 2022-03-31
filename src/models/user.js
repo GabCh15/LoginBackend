@@ -116,6 +116,43 @@ var getNonce = async (user) => {
   }
 };
 
+var getRoleFromContract = async (userAddress) => {
+  var contract = await new web3.eth.Contract(
+    [
+      {
+        constant: true,
+        inputs: [
+          {
+            name: "walletAddress",
+            type: "string",
+          },
+        ],
+        name: "getUserRole",
+        outputs: [
+          {
+            name: "",
+            type: "string",
+          },
+        ],
+        payable: false,
+        stateMutability: "view",
+        type: "function",
+      },
+      {
+        inputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "constructor",
+      },
+    ],
+    "0x399da31243135915dec35d1da969f7847673b66b"
+  );
+  return await contract.methods
+    .getUserRole(userAddress)
+    .call({ walletAddress: userAddress }, (err, res) => res);
+
+};
+
 module.exports = {
   hashData: hashData,
   getUser: getUser,
@@ -126,4 +163,5 @@ module.exports = {
   changeNonce: changeNonce,
   getNonce: getNonce,
   loginUser: loginUser,
+  getRoleFromContract: getRoleFromContract,
 };

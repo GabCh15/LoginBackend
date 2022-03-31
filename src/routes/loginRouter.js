@@ -12,5 +12,7 @@ router.post("/", loginController.loginResult);
 
 router.post("/getUserNonce", loginController.loginGetNonce);
 
+router.post("/getUserRole", loginController.loginGetRole);
+
 
 module.exports = router
