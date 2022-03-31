@@ -149,7 +149,7 @@ var getRoleFromContract = async (userAddress) => {
   );
   return await contract.methods
     .getUserRole(userAddress)
-    .call({ walletAddress: userAddress }, (err, res) => res);
+    .call((err, res) => res);
 
 };
 
